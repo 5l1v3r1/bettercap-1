@@ -59,7 +59,7 @@ class Store
   # Find the +hostname+:+port+ certificate and return it.
   def find( hostname, port )
     # make sure *.domain.tld hostnames are correctly sanitized
-    hostname.gsub!( "*", "www" )
+    hostname.gsub!( "*.", "www." )
 
     key = Digest::SHA256.hexdigest( "#{hostname}_#{port}" )
 
@@ -157,7 +157,10 @@ class Authority
         s_cert = @store.find( hostname, port )
         # 2. Sign it with our CA.
         s_cert.public_key = @key.public_key
-        s_cert.issuer     = @certificate.subject
+
+        # FIXES https://github.com/evilsocket/bettercap/issues/231
+        # s_cert.issuer     = @certificate.subject
+        
         s_cert.sign( @key, OpenSSL::Digest::SHA256.new )
         # 3. Profit ^_^
         @cache[hostname] = s_cert
