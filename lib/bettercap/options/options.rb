@@ -157,7 +157,7 @@ class Options
       'https-proxy' => ( @proxies.proxy_https ? on : off ),
       'sslstrip'    => ( @proxies.sslstrip? ? on : off ),
       'http-server' => ( @servers.httpd ? on : off ),
-      'dns-server'  => ( @proxies.sslstrip? or @servers.dnsd ? on : off )
+      'dns-server'  => ( (@proxies.sslstrip? or @servers.dnsd) ? on : off )
     }
 
     msg = "Starting [ "
@@ -167,9 +167,6 @@ class Options
     msg += "] ...\n\n"
 
     Logger.info msg
-
-    Logger.warn "You are running an unstable/beta version of this software, please" \
-                " update to a stable one if available." if BetterCap::VERSION =~ /[\d\.+]b/
   end
 end
 end
