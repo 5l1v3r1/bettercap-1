@@ -5,7 +5,7 @@ BETTERCAP
 
 Author : Simone 'evilsocket' Margaritelli
 Email  : evilsocket@gmail.com
-Blog   : http://www.evilsocket.net/
+Blog   : https://www.evilsocket.net/
 
 This project is released under the GPL 3 license.
 
@@ -106,7 +106,7 @@ class ProxyOptions
 
     opts.on( '--tcp-proxy-module MODULE', "Ruby TCP proxy module to load." ) do |v|
       @tcp_proxy_module = File.expand_path(v)
-      Proxy::TCP::Module.load( @tcp_proxy_module )
+      Proxy::TCP::Module.load( @tcp_proxy_module, opts )
     end
 
     opts.on( '--tcp-proxy-port PORT', "Set local TCP proxy port, default to #{@tcp_proxy_port.to_s.yellow} ." ) do |v|
@@ -181,7 +181,6 @@ class ProxyOptions
 
     opts.on( '--http-ports PORT1,PORT2', "Comma separated list of HTTP ports to redirect to the proxy, default to #{@http_ports.map{|x| x.to_s.yellow }.join(', ')}." ) do |v|
       @http_ports = ProxyOptions.parse_ports( v )
-      @proxy      = true
     end
 
     opts.on( '--proxy-upstream-address ADDRESS', 'If set, only requests coming from this server address will be redirected to the HTTP/HTTPS proxies.' ) do |v|
@@ -210,7 +209,6 @@ class ProxyOptions
 
     opts.on( '--https-ports PORT1,PORT2', "Comma separated list of HTTPS ports to redirect to the proxy, default to #{@https_ports.map{|x| x.to_s.yellow }.join(', ')}." ) do |v|
       @https_ports = ProxyOptions.parse_ports( v )
-      @proxy_https = true
     end
 
     opts.separator ""

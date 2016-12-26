@@ -5,7 +5,7 @@ BETTERCAP
 
 Author : Simone 'evilsocket' Margaritelli
 Email  : evilsocket@gmail.com
-Blog   : http://www.evilsocket.net/
+Blog   : https://www.evilsocket.net/
 
 This project is released under the GPL 3 license.
 
@@ -94,7 +94,8 @@ class StreamLogger
   def self.hexdump( data, opts = {} )
     bytes     = data
     msg       = ''
-    line_size = opts[:line_size] || 16
+    width     = IO.console.winsize[1]
+    line_size = opts[:line_size] || ( width / 4 ).round
     padding   = opts[:padding] || ''
 
     while bytes

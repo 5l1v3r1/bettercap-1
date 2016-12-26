@@ -5,7 +5,7 @@ BETTERCAP
 
 Author : Simone 'evilsocket' Margaritelli
 Email  : evilsocket@gmail.com
-Blog   : http://www.evilsocket.net/
+Blog   : https://www.evilsocket.net/
 
 This project is released under the GPL 3 license.
 
@@ -18,6 +18,7 @@ module Shell
     # Execute +command+ and return its output.
     # Raise +BetterCap::Error+ if the return code is not 0.
     def execute(command)
+      Logger.debug command
       r = ''
       10.times do
         begin

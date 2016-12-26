@@ -7,7 +7,7 @@
 
   Author : Simone 'evilsocket' Margaritelli
   Email  : evilsocket@gmail.com
-  Blog   : http://www.evilsocket.net/
+  Blog   : https://www.evilsocket.net/
 
   This project is released under the GPL 3 license.
 
@@ -26,6 +26,7 @@ require 'json'
 require 'net/dns'
 require 'net/http'
 require 'optparse'
+require 'io/console'
 
 Object.send :remove_const, :Config rescue nil
 Config = RbConfig
