@@ -1,8 +1,6 @@
 **bettercap** is a complete, modular, portable and easily extensible **MITM** tool and framework with every kind of diagnostic
 and offensive feature you could need in order to perform a man in the middle attack.
 
-Before submitting issues, please read the relevant [section](https://www.bettercap.org/docs/contribute/) in the documentation.
-
 <table>
     <tr>
         <th>Version</th>
@@ -17,16 +15,9 @@ Before submitting issues, please read the relevant [section](https://www.betterc
         <td><a href="https://www.bettercap.org/">https://www.bettercap.org/</a></td>
     </tr>
     <tr>
-        <th>Blog</th>
-        <td><a href="https://www.bettercap.org/blog/">https://www.bettercap.org/blog/</a></td>
-    <tr>
-        <th>Github</th>
+        <th>GitHub</th>
         <td><a href="https://github.com/evilsocket/bettercap">https://github.com/evilsocket/bettercap</a></td>
      <tr/>
-    <tr>
-        <th>Documentation</th>
-        <td><a href="https://www.bettercap.org/docs/">https://www.bettercap.org/docs/</a></td>
-    </tr>
     <tr>
         <th>Code Documentation</th>
         <td>
@@ -60,39 +51,59 @@ Installation
 
 **Dependencies**
 
-All dependencies will be automatically installed through the GEM system but in some case you might need to install some system
+All dependencies will be automatically installed through the RubyGems system but in some cases you might need to install some system
 dependency in order to make everything work.
 
-**On OSX** ( install brew and xcode tools first ):
+**On OSX** (install brew and xcode tools first):
 
-    brew install libpcap
+```shell
+brew install libpcap
+```
 
 **On Linux**:
 
-    sudo apt-get install build-essential ruby-dev libpcap-dev
+```shell
+sudo apt-get install build-essential ruby-dev libpcap-dev net-tools
+```
 
 This should solve issues such as [this one](https://github.com/evilsocket/bettercap/issues/22) or [this one](https://github.com/evilsocket/bettercap/issues/100).
 
-**Stable Release ( GEM )**
+**Stable Release (RubyGems)**
 
-    gem install bettercap
+```shell
+gem install bettercap
+```
 
 **From Source**
 
-    git clone https://github.com/evilsocket/bettercap
-    cd bettercap
-    gem build bettercap.gemspec
-    sudo gem install bettercap*.gem
+```shell
+git clone https://github.com/evilsocket/bettercap
+cd bettercap
+gem build bettercap.gemspec
+sudo gem install bettercap*.gem
+```
 
 **Installation on Kali Linux**
 
 Kali Linux has bettercap packaged and added to the **kali-rolling** repositories. To install bettercap and all dependencies in one fell swoop on the latest version of Kali Linux:
-    
-    apt-get update
-    apt-get dist-upgrade
-    apt-get install bettercap
+   
+```shell
+apt-get update
+apt-get dist-upgrade
+apt-get install bettercap
+```
+
+**Installation on Parrot Security OS**
+
+Parrot Security has bettercap packaged and added to the **ParrotSec** repositories. To install bettercap and all dependencies in one fell swoop on the latest version of Parrot Security:
+   
+```shell
+apt-get update
+apt-get dist-upgrade
+apt-get install bettercap
+```
 
 Documentation and Examples
 ============
 
-Please refer to the [official website](https://www.bettercap.org/docs/).
+Please refer to the [official website](https://www.bettercap.org/).

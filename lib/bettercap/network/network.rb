@@ -22,9 +22,9 @@ class << self
 
     Logger.debug "NETSTAT:\n#{nstat}"
 
-    nstat.split(/\n/).select {|n| n =~ /UG/ }.each do |line|
+    nstat.split(/\n/).select {|n| n =~ /UG.+#{iface}/ }.each do |line|
       Network::Validator.each_ip(line) do |address|
-        return address
+        return address unless address.end_with?('.0')
       end
     end
     nil
@@ -142,7 +142,7 @@ class << self
     if ctx.options.core.use_ipv6
       BetterCap::Loader.load("BetterCap::Discovery::Agents::Ndp").new(ctx, address)
     else
-      [ 'Icmp', 'Udp', 'Arp' ].each do |name|
+      [ 'Icmp', 'Udp', 'Arp', 'Mdns', 'Upnp', 'Wsd' ].each do |name|
         BetterCap::Loader.load("BetterCap::Discovery::Agents::#{name}").new(ctx, address)
       end
     end
